@@ -20,40 +20,38 @@ namespace BookStore.Controller
         [HttpGet("{Id}")]
         public About Getabout(int Id)
         {
-            var about = _context.Abouts.FirstOrDefault(about => about.Id == Id);
+            var about = _context.About.FirstOrDefault(about => about.Id == Id);
             return about;
         }
 
 
         [HttpGet]
-        public List<Book> GetBooks()
+        public List<About> GetAbout()
         {
-            var books = _context.Books.ToList();
-            return books;
+            var about = _context.About.ToList();
+            return about;
         }
 
 
         [HttpPost]
-        public int PostBook(Book book)
+        public int PostAbout(About about)
         {
-            _context.Books.Add(book);
+            _context.About.Add(about);
             _context.SaveChanges();
-            return book.Id;
+            return about.Id;
         }
 
         [HttpPut("{id}")]
-        public ActionResult UpdateBook(int id, Book book)
+        public ActionResult UpdateAbout(int id, About about)
         {
-            var existingBook = _context.Books.FirstOrDefault(b => b.Id == id);
-            if (existingBook == null)
+            var existingAbout = _context.About.FirstOrDefault(a => a.Id == id);
+            if (existingAbout == null)
             {
                 return NotFound();
             }
 
-            existingBook.Title = book.Title;
-            existingBook.Author = book.Author;
-            existingBook.Price = book.Price;
-            existingBook.CategoryId = book.CategoryId;
+            existingAbout.Name = about.Name;
+            
 
 
             _context.SaveChanges();
@@ -61,13 +59,13 @@ namespace BookStore.Controller
         }
 
         [HttpDelete]
-        public void DeleteBook([FromBody] Book book)
+        public void DeleteAbout([FromBody] About about)
         {
-            var updBook = _context.Books.FirstOrDefault(b => b.Title == book.Title);
+            var updA = _context.About.FirstOrDefault(a => a.Name == about.Name);
 
-            if (updBook != null)
+            if (updA != null)
             {
-                _context.Books.Remove(updBook);
+                _context.About.Remove(updA);
                 _context.SaveChanges();
             }
         }

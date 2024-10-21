@@ -7,6 +7,11 @@ public class BookStoreContext : DbContext
 {
     public DbSet<Book> Books { get; set; }
     public DbSet<Category>  Category { get;  set; }
+    public DbSet<About>  About { get;  set; }
+    public DbSet<Adress>  Adress { get;  set; }
+    public DbSet<Author>  Author { get;  set; }
+    public DbSet<Order>  Order { get;  set; }
+    public DbSet<Report>  Report { get;  set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

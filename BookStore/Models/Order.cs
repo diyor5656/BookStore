@@ -9,6 +9,10 @@
 
         public int OrderDetailsId { get; set; }
         public virtual OrderDetails OrderDetails { get; set; }
+        public int StatusId { get; set; }
+        public virtual Status Status { get; set; }
+
+       
 
     }
 }

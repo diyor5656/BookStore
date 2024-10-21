@@ -51,7 +51,6 @@ namespace BookStore.Controller
             }
 
             existingBook.Title = book.Title;
-            existingBook.Author = book.Author;
             existingBook.Price = book.Price;
             existingBook.CategoryId = book.CategoryId;
             
