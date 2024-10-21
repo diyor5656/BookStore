@@ -1,7 +1,5 @@
 ﻿using BookStore.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BookStore.Controller
 {
@@ -16,15 +14,15 @@ namespace BookStore.Controller
             _context = context;
         }
 
-        
+
         [HttpGet("{Id}")]
         public Book GetBook(int Id)
         {
             var book = _context.Books.FirstOrDefault(book => book.Id == Id);
-            return book; 
+            return book;
         }
 
-       
+
         [HttpGet]
         public List<Book> GetBooks()
         {
@@ -32,12 +30,12 @@ namespace BookStore.Controller
             return books;
         }
 
-        
+
         [HttpPost]
         public int PostBook(Book book)
         {
             _context.Books.Add(book);
-            _context.SaveChanges(); 
+            _context.SaveChanges();
             return book.Id;
         }
 
@@ -53,8 +51,8 @@ namespace BookStore.Controller
             existingBook.Title = book.Title;
             existingBook.Price = book.Price;
             existingBook.CategoryId = book.CategoryId;
-            
-           
+
+
             _context.SaveChanges();
             return NoContent();
         }
@@ -66,7 +64,7 @@ namespace BookStore.Controller
 
             if (updBook != null)
             {
-                _context.Books.Remove(updBook); 
+                _context.Books.Remove(updBook);
                 _context.SaveChanges();
             }
         }

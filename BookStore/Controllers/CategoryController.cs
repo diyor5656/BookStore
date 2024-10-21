@@ -1,39 +1,37 @@
 ﻿using BookStore.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using BookStore.Models;
 
 namespace BookStore.Controllers
 {
-   
-        [ApiController]
-        [Route("[controller]")]
-        public class CategoryController : ControllerBase
+
+    [ApiController]
+    [Route("[controller]")]
+    public class CategoryController : ControllerBase
+    {
+        private readonly BookStoreContext _context;
+
+        public CategoryController(BookStoreContext context)
         {
-            private readonly BookStoreContext _context;
+            _context = context;
+        }
 
-            public CategoryController(BookStoreContext context)
-            {
-                _context = context;
-            }
 
-            
-            [HttpPost]
-            public int PostCategory(Category category)
-            {
-                _context.Category.Add(category);
-                _context.SaveChanges();
-                return category.Id;
-            }
+        [HttpPost]
+        public int PostCategory(Category category)
+        {
+            _context.Category.Add(category);
+            _context.SaveChanges();
+            return category.Id;
+        }
 
-            
-            [HttpGet]
-            public List<Category> GetCategory()
-            {
-                return _context.Category.ToList();
-            }
 
-        
+        [HttpGet]
+        public List<Category> GetCategory()
+        {
+            return _context.Category.ToList();
+        }
+
+
 
         [HttpPut]
         public void UpdateCategory(Category category)
@@ -44,7 +42,7 @@ namespace BookStore.Controllers
             {
                 existingCategory.Name = category.Name;
 
-                _context.SaveChanges(); 
+                _context.SaveChanges();
             }
         }
 

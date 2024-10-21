@@ -1,7 +1,5 @@
 ﻿using BookStore.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BookStore.Controller
 {
@@ -51,7 +49,7 @@ namespace BookStore.Controller
             }
 
             existingAbout.Name = about.Name;
-            
+
 
 
             _context.SaveChanges();

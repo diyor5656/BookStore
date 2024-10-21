@@ -1,7 +1,5 @@
 ﻿using BookStore.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BookStore.Controller
 {
@@ -53,7 +51,7 @@ namespace BookStore.Controller
             existingR.Name = rep.Name;
             existingR.Description = rep.Description;
             existingR.Count = rep.Count;
-            
+
 
             _context.SaveChanges();
             return NoContent();
@@ -83,7 +81,7 @@ namespace BookStore.Controller
                 _context.Report.Remove(updRc);
                 _context.SaveChanges();
             }
-            
+
         }
 
     }

@@ -1,7 +1,5 @@
 ﻿using BookStore.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BookStore.Controller
 {
@@ -51,7 +49,7 @@ namespace BookStore.Controller
             }
 
             existingA.Name = avtor.Name;
-            
+
 
 
 
@@ -69,7 +67,7 @@ namespace BookStore.Controller
                 _context.Author.Remove(updA);
                 _context.SaveChanges();
             }
-           
+
         }
 
     }

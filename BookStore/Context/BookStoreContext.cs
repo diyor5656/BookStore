@@ -11,7 +11,9 @@ public class BookStoreContext : DbContext
     public DbSet<Adress>  Adress { get;  set; }
     public DbSet<Author>  Author { get;  set; }
     public DbSet<Order>  Order { get;  set; }
+    public DbSet<OrderDetails>  OrderD { get;  set; }
     public DbSet<Report>  Report { get;  set; }
+    public DbSet<User>  User { get;  set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -22,4 +24,6 @@ public class BookStoreContext : DbContext
     {
         modelBuilder.Entity<Book>();
     }
+
+   
 }
