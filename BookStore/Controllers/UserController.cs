@@ -7,50 +7,52 @@ namespace BookStore.Controller
 {
     [ApiController]
     [Route("[controller]")]
-    public class OrderController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly BookStoreContext _context;
 
-        public OrderController(BookStoreContext context)
+        public UserController(BookStoreContext context)
         {
             _context = context;
         }
 
 
         [HttpGet("{Id}")]
-        public Order GetOrder(int Id)
+        public User GetUser(int Id)
         {
-            var order = _context.Order.FirstOrDefault(o => o.Id == Id);
-            return order;
+            var user = _context.User.FirstOrDefault(u => u.Id == Id);
+            return user;
         }
 
 
         [HttpGet]
-        public List<Order> GetOrder()
+        public List<User> GetUser()
         {
-            var order = _context.Order.ToList();
-            return order;
+            var user = _context.User.ToList();
+            return user;
         }
 
 
         [HttpPost]
-        public int PostOrder(Order order)
+        public int PostOrder(User user)
         {
-            _context.Order.Add(order);
+            _context.User.Add(user);
             _context.SaveChanges();
-            return order.Id;
+            return user.Id;
         }
 
         [HttpPut("{id}")]
-        public ActionResult UpdateOrder(int id, Order order)
+        public ActionResult UpdateUser(int id, User user)
         {
-            var existingA = _context.Order.FirstOrDefault(a => a.Id == id);
+            var existingA = _context.User.FirstOrDefault(a => a.Id == id);
             if (existingA == null)
             {
                 return NotFound();
             }
 
-            existingA.Coment = order.Coment;
+            existingA.Name = user.Name;
+            existingA.Password = user.Password;
+            existingA.Email = user.Email;
 
 
 
@@ -59,13 +61,27 @@ namespace BookStore.Controller
         }
 
         [HttpDelete]
-        public void DeleteOreder([FromBody] Order order)
+        public void DeleteOreder([FromBody] User user)
         {
-            var updA = _context.Order.FirstOrDefault(a => a.Coment == order.Coment);
+            var updA = _context.User.FirstOrDefault(a => a.Name == user.Name);
 
             if (updA != null)
             {
-                _context.Order.Remove(updA);
+                _context.User.Remove(updA);
+                _context.SaveChanges();
+            }
+            var updn = _context.User.FirstOrDefault(a => a.Password == user.Password);
+
+            if (updn != null)
+            {
+                _context.User.Remove(updn);
+                _context.SaveChanges();
+            } 
+            var upde = _context.User.FirstOrDefault(a => a.Email == user.Email);
+
+            if (upde != null)
+            {
+                _context.User.Remove(upde);
                 _context.SaveChanges();
             }
 
