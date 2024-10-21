@@ -7,5 +7,8 @@
 
         public virtual ICollection<Book> Books { get; set; }
 
+        public int OrderDetailsId { get; set; }
+        public virtual OrderDetails OrderDetails { get; set; }
+
     }
 }
