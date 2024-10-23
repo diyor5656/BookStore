@@ -48,9 +48,9 @@ namespace BookStore.Controllers
 
 
         [HttpDelete]
-        public void DeleteCategory([FromBody] Category category)
+        public void DeleteCategory(int id)
         {
-            var updCategory = _context.Category.FirstOrDefault(c => c.Name == category.Name);
+            var updCategory = _context.Category.FirstOrDefault(category => category.Id == id);
 
             if (updCategory != null)
             {
